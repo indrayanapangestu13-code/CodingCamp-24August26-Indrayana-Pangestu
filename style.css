@@ -1,0 +1,285 @@
+/* ===========================================
+   THEME VARIABLES
+   Trik dark/light mode: semua warna disimpan
+   sebagai variable. Saat body dapat class "dark",
+   variable-nya diganti -> seluruh UI ikut berubah.
+=========================================== */
+:root {
+  --bg: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+  --input-bg: #f9fafb;
+}
+
+body.dark {
+  --bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --card-bg: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --danger: #f87171;
+  --border: #334155;
+  --input-bg: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  transition: background 0.3s ease;
+  padding: 24px;
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+}
+
+/* ===== Header ===== */
+.header-card {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: var(--input-bg);
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.clock {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.date-text {
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.greeting-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.greeting-row h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* ===== Grid layout ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid section:nth-child(2) {
+  grid-row: span 2;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .grid section:nth-child(2) {
+    grid-row: auto;
+  }
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 16px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Timer ===== */
+.timer-display {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--accent);
+  margin: 12px 0;
+}
+
+.timer-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.timer-settings {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.timer-settings input {
+  width: 60px;
+}
+
+/* ===== Shared buttons/inputs ===== */
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--input-bg);
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+/* ===== Tasks ===== */
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.task-form input {
+  flex: 1;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.task-item span.task-text {
+  flex: 1;
+  cursor: text;
+}
+
+.task-item.done span.task-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-item input.edit-input {
+  flex: 1;
+}
+
+.task-item button.delete-btn {
+  background: var(--danger);
+}
+
+.task-item button.delete-btn:hover {
+  background: #dc2626;
+}
+
+/* ===== Quick Links ===== */
+.link-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.link-form input {
+  flex: 1;
+  min-width: 100px;
+}
+
+.link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.link-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.link-pill .remove-link {
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  color: white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
